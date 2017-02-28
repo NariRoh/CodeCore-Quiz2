@@ -1,0 +1,53 @@
+<h1><%= @idea.title %></h1>
+<hr>
+<p><%= @idea.description %></p>
+<div class="user">
+  <strong>By: <%= @idea.user.full_name %></strong>
+  <div class="user-can">
+    <% if can?(:manage, @idea) %>
+    <div>
+      <%= link_to 'Edit', edit_idea_path(@idea), class: 'btn btn-default' %>
+      <%= link_to 'Delete', idea_path(@idea), method: :delete,
+      data: { confirm: 'Are you sure?' }, class: 'btn btn-default' %>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<!-- <div class="text-right">
+  <%#= link_to 'Idea List', ideas_path, class: 'btn btn-default ' %>
+</div> -->
+
+<hr>
+
+<% if user_signed_in? %>
+  <%= @review.errors.full_messages.join(', ') %>
+  <%= form_for [@idea, @review] do |f| %>
+    <div class="form-group">
+      <%= f.label :body, 'Review' %>
+      <%= f.text_area :body, class: 'form-control' %>
+    </div>
+    <div class="text-right">
+      <%= f.submit 'Create Review', class: 'btn btn-default' %>
+    </div>
+  <% end %>
+<% end %>
+
+<hr>
+
+<h3>Reviews</h3>
+<br>
+<% @idea.reviews.each do |review| %>
+  <p><%= review.body %></p>
+  <div class="text-right">
+    |
+    <i><%= review.user.full_name %></i>
+    |
+    <% if can?(:destroy, review) %>
+    <%= link_to 'Delete', review_path(review),
+    method: :delete,
+    data: { confirm: 'Are you sure?' } %>
+    |
+    <% end %>
+  </div>
+<% end %>
