@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'ideas#index'
 
   resources :ideas, shallow: true do
+    resources :likes, only: [:create, :destroy]
     resources :reviews, only: [:create, :destroy]
   end
 

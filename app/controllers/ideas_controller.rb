@@ -4,6 +4,7 @@ class IdeasController < ApplicationController
   before_action :authorize, only: [:edit, :update, :destroy]
 
   def index
+    @idea  = Idea.new
     @ideas = Idea.order(created_at: :desc)
   end
 

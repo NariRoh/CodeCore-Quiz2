@@ -3,8 +3,9 @@ class User < ApplicationRecord
 
   has_many :ideas, dependent: :destroy
   has_many :review, dependent: :nullify
-  # has_many :likes, dependent: :destroy
-  # has_many :liked_ideas, through: :likes, source: :review
+  
+  has_many :likes, dependent: :destroy
+  has_many :liked_ideas, through: :likes, source: :idea
 
   before_validation :downcase_email
 

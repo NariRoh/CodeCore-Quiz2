@@ -14,23 +14,30 @@
       <ul class="nav navbar-nav">
         <li><%= link_to 'All Ideas',ideas_path %></li>
       </ul>
+
       <ul class="nav navbar-nav navbar-right ul-right">
         <% if user_signed_in? %>
           <li class="navbar-text">Hello!
-            <%= "#{current_user.first_name}" %>
-          </li>
-          <li><%= link_to 'Sign Out', sessions_path,
-                                      method: :delete %></li>
+            <%= "#{current_user.first_name}" %></li>
+          <li><%= link_to 'Sign Out', sessions_path, method: :delete %></li>
 
-          <li><%= button_to 'New Idea',
+          <!-- New idea button without modal -->
+
+          <!-- <li><%#= button_to 'New Idea',
                   new_idea_path,
                   method: :get,
-                  class: 'btn btn-default navbar-btn' %></li>
+                  class: 'btn btn-default navbar-btn' %></li> -->
 
-          <%#= link_to "ModalTest", "#testModal", "data-toggle" => "modal" %>
-          <!-- <li><%#= link_to 'New Idea', new_idea_path, class: 'btn btn-default navbar-btn', data: { toggle: 'modal', target: '#myModal' } %></li> -->
-            <!-- <li><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"></li> -->
-          <!-- </button></li> -->
+          <!-- Button trigger modal -->
+
+          <li>
+            <button type="button"
+              class="btn btn-default navbar-btn"
+                data-toggle="modal" data-target="#my-modal">
+                New Idea
+            </button>
+          </li>
+
         <% else %>
           <li><%= link_to 'Sign Up', new_user_path %></li>
           <li><%= link_to 'Login', new_session_path %></li>
