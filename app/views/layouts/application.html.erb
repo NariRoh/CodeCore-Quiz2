@@ -12,11 +12,10 @@
     <%= render 'layouts/nav' %>
 
     <div class="container">
-      <%= notice || alert %>
-      <div class="row col-md-9">
+      <div class="col-md-8 col-md-offset-2">
+        <%= notice || alert %>
 
-
-    <%= yield %>
+        <%= yield %>
 
       </div>
     </div>

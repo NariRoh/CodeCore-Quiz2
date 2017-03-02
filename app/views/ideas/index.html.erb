@@ -4,12 +4,12 @@
 <ul class="ideas list-unstyled">
   <% @ideas.each do |idea| %>
     <li class="idea">
-      <h4 class="idea-title"><%= idea.title %></a></h4>
+      <h4 class="idea-title"><%= idea.title %></h4>
       <%= link_to idea.description, idea_path(idea),
       class: 'description' %>
       <div class="box">
         <i>By: <%= idea.user.full_name %></i>
-        <%= button_to 'Like', root_path, class: 'btn btn-default' %>
+        <%= button_to 'Like', root_path, method: :get, class: 'btn btn-default' %>
       </div>
       <hr>
     </li>

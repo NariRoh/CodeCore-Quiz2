@@ -5,23 +5,14 @@
 /* sliding down or up description of an idea */
 
 $(document).ready(function() {
+
   $('.description').hide();
 
-  $('.idea .idea-title').click(function() {
-    const $description = $(this).closest('.idea').find('a');
+  $('.idea .idea-title').on('click', function() {
+    const $description = $(this).closest('.idea').find('.description');
     $description.slideToggle(300);
   });
 });
 
-// $description.slideToggle(300, function() {
-//   $(this).toggleClass('hidden');
-// })//.toggleClass('hidden');
-
-
-
-
-
-
-
-
-//
+// function Q(query) { return document.querySelector(query) }
+// function Qa(query) { return document.querySelectorAll(query) }

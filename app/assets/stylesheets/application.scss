@@ -15,15 +15,11 @@
 @import "bootstrap";
 
 body {
-  padding-bottom: 1rem;
+  padding-bottom: 3rem;
   padding-top: 150px;
   a {
     color: inherit;
   }
-  // .container {
-  //   float: none;
-  //   margin: 0 auto;
-  // }
 }
 
 .navbar-default {
@@ -49,3 +45,7 @@ body {
     display: flex;
   }
 }
+
+// .description {
+//   display: none;
+// }
