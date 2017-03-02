@@ -8,6 +8,14 @@ class Ability
       i.user == user
     end
 
+    can :like, Idea do |i|
+      i.user != user
+    end
+
+    cannot :like, Idea do |i|
+      i.user == user 
+    end
+
     can :destroy, Review do |r|
       r.user == user
     end

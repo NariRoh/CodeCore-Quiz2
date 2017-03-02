@@ -4,22 +4,25 @@
 <div class="user">
   <strong>By: <%= @idea.user.full_name %></strong>
   <div class="user-can">
+
     <% if can?(:manage, @idea) %>
+
     <div>
       <%= link_to 'Edit', edit_idea_path(@idea), class: 'btn btn-default' %>
       <%= link_to 'Delete', idea_path(@idea), method: :delete,
       data: { confirm: 'Are you sure?' }, class: 'btn btn-default' %>
     <% end %>
 
-    <% #if user_signed_in? && liked_by?(current_user) %>
-
-      <%#= link_to "UnLike",
-          idea_path(@idea.like_for(current_user)),
-          method: :delete %>
-
-    <%# elsif user_signed_in? && cannot?(:manage, @idea) %>
-      <%= link_to 'Like', idea_likes_path(@idea), class: 'btn btn-default', method: :post %>
-    <%# end %>
+    <% if user_signed_in? && can?(:like, @idea) %>
+      <% if @idea.liked_by?(current_user) %>
+        <%= link_to "UnLike", like_path(@idea.like_for(current_user)),
+                              class: 'btn btn-default',
+                              method: :delete %>
+      <% else %>
+        <%= link_to 'Like', idea_likes_path(@idea), class: 'btn btn-default',
+                                                    method: :post %>
+      <% end %>
+    <% end %>
     </div>
 
   </div>

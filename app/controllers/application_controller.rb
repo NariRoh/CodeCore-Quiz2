@@ -15,10 +15,4 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
-  # def liked_by?(user)
-  #   likes.find_by_user_id(user.id).present?
-  # end
-  # helper_method :liked_by?
-
-
 end
