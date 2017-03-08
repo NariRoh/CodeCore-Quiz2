@@ -6,13 +6,12 @@
 
 $(document).ready(function() {
 
-  $('.description').hide();
+  // $('.description').hide();
 
-  $('.idea .idea-title').on('click', function() {
+  // $('.idea .idea-title').on('click', function() {
+
+  $(document).on('click', '.idea .idea-title', function() {
     const $description = $(this).closest('.idea').find('.description');
     $description.slideToggle(300);
   });
 });
-
-// function Q(query) { return document.querySelector(query) }
-// function Qa(query) { return document.querySelectorAll(query) }
